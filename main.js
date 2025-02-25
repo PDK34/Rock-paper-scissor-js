@@ -15,19 +15,18 @@ function getCompChoice(){
 
 function getHumanChoice(){
     let humanChoice = prompt("Enter (rock/paper/scissor)");
-    return humanChoice;
+    if(humanChoice.toLowerCase()=='rock'||humanChoice.toLowerCase()=='paper'||humanChoice.toLowerCase()=='scissor'){
+    return humanChoice;}
 }
 
 let humanScore = 0;
 let compScore = 0;
-
+let round = 0;
 function playRound(humanChoice,compChoice){
-    console.log(`you choose ${humanChoice}`);
-    console.log(`Comp says:${compChoice}`);
-    
+    console.log(`Computer chose:${compChoice}`);
+    console.log(`Human chose:${humanChoice}`)
+
     if(compChoice=='rock'){
-        console.log(humanChoice)
-        console.log(typeof humanChoice)
         if(humanChoice.toLowerCase()=='paper'){
            console.log("You won! Inching closer to the crown,prince!");
            humanScore++;
@@ -72,8 +71,30 @@ function playRound(humanChoice,compChoice){
 const humanSelection = getHumanChoice();
 const compSelection = getCompChoice();
 
-playRound(humanSelection,compSelection);
 
 function playGame(){
-    
+    round++;
+    console.log(`Round: ${round}`);
+    const humanSelection = getHumanChoice();
+    const compSelection = getCompChoice();
+    playRound(humanSelection,compSelection);
+
 }
+
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
+
+console.log(`computer score:${compScore}`);
+console.log(`human score:${humanScore}`);
+if(compScore>humanScore){
+    console.log("As expected of the filthy peasant you are!MmuuHAHAHAHA!!!");
+}
+
+else if(compScore<humanScore){
+    console.log("Never doubted you,my King!Here is your crown.Please have it and lead us to paradise.");
+}
+
+else{console.log("A draw!As great as ever!");}
