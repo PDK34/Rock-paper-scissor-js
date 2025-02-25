@@ -97,6 +97,8 @@ playGame();
 playGame();
 playGame();
 
+console.log("");
+
 console.log("FINAL SCORE");
 console.log(`computer score:${compScore}`);
 console.log(`human score:${humanScore}`);
