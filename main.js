@@ -16,12 +16,14 @@ function getCompChoice(){
 function getHumanChoice(){
     let humanChoice = prompt("Enter (rock/paper/scissor)");
     if(humanChoice.toLowerCase()=='rock'||humanChoice.toLowerCase()=='paper'||humanChoice.toLowerCase()=='scissor'){
-    return humanChoice;}
+    return humanChoice;
+    }
 }
 
 let humanScore = 0;
 let compScore = 0;
 let round = 0;
+
 function playRound(humanChoice,compChoice){
     console.log(`Computer chose:${compChoice}`);
     console.log(`Human chose:${humanChoice}`)
@@ -81,6 +83,7 @@ function playGame(){
 
 }
 
+
 playGame();
 playGame();
 playGame();
@@ -89,12 +92,15 @@ playGame();
 
 console.log(`computer score:${compScore}`);
 console.log(`human score:${humanScore}`);
+
 if(compScore>humanScore){
-    console.log("As expected of the filthy peasant you are!MmuuHAHAHAHA!!!");
+    console.log("As expected of the lowly peasant you are!MmuuHAHAHAHA!!!");
 }
 
 else if(compScore<humanScore){
     console.log("Never doubted you,my King!Here is your crown.Please have it and lead us to paradise.");
 }
 
-else{console.log("A draw!As great as ever!");}
+else{
+    console.log("A draw!As expected of the battle between two legendary warriors!");
+}
