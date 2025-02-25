@@ -14,10 +14,17 @@ function getCompChoice(){
 }
 
 function getHumanChoice(){
-    let humanChoice = prompt("Enter (rock/paper/scissor)");
-    if(humanChoice.toLowerCase()=='rock'||humanChoice.toLowerCase()=='paper'||humanChoice.toLowerCase()=='scissor'){
-    return humanChoice;
-    }
+    let humanChoice;
+while (true) {
+        
+        humanChoice= prompt("Enter (rock/paper/scissor)").toLowerCase();
+        if(humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors'){
+        return humanChoice;
+        }else {
+            alert("⚠️ Invalid choice! Please enter rock, paper, or scissors.");
+        }
+        
+}
 }
 
 let humanScore = 0;
@@ -90,6 +97,7 @@ playGame();
 playGame();
 playGame();
 
+console.log("FINAL SCORE");
 console.log(`computer score:${compScore}`);
 console.log(`human score:${humanScore}`);
 
@@ -98,7 +106,7 @@ if(compScore>humanScore){
 }
 
 else if(compScore<humanScore){
-    console.log("Never doubted you,my King!Here is your crown.Please have it and lead us to paradise.");
+    console.log("Never doubted you,my King!Here is your crown👑.Please have it and lead us to paradise.");
 }
 
 else{
