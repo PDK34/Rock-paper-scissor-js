@@ -77,8 +77,8 @@ function playRound(humanChoice,compChoice){
 
 }
 
-const humanSelection = getHumanChoice();
-const compSelection = getCompChoice();
+/* const humanSelection = getHumanChoice();
+const compSelection = getCompChoice(); */
 
 
 function playGame(){
@@ -91,11 +91,6 @@ function playGame(){
 }
 
 
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
 
 console.log("");
 
