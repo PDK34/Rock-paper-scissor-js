@@ -1,111 +1,68 @@
-function getCompChoice(){
-    let compChoice;
-    let randomNo = Math.floor(Math.random()*3+1);
-    if(randomNo==1){
-        compChoice='rock';
-    }
-    else if(randomNo==2){
-        compChoice='paper';
-    }
-    else{
-        compChoice='scissor';
-    }
-    return compChoice;
-}
-
-function getHumanChoice(){
-    let humanChoice;
-while (true) {
-        
-        humanChoice= prompt("Enter (rock/paper/scissor)").toLowerCase();
-        if(humanChoice === 'rock' || humanChoice === 'paper' || humanChoice === 'scissors'){
-        return humanChoice;
-        }else {
-            alert("⚠️ Invalid choice! Please enter rock, paper, or scissors.");
-        }
-        
-}
+function getCompChoice() {
+    let choices = ['rock', 'paper', 'scissor'];
+    let randomNo = Math.floor(Math.random() * 3);
+    return choices[randomNo];
 }
 
 let humanScore = 0;
 let compScore = 0;
 let round = 0;
 
-function playRound(humanChoice,compChoice){
-    console.log(`Computer chose:${compChoice}`);
-    console.log(`Human chose:${humanChoice}`)
+const score = document.querySelector('.score');
+const comment = document.querySelector('.comment');
+const resultBox = document.querySelector('.result');
 
-    if(compChoice=='rock'){
-        if(humanChoice.toLowerCase()=='paper'){
-           console.log("You won! Inching closer to the crown,prince!");
-           humanScore++;
-        }
-       else if(humanChoice.toLowerCase()=='scissor'){
-        console.log("You lose,peasant!");
-       compScore++;}
-    
-    else{
-        console.log("A wonderful draw!");
+function playRound(humanChoice, compChoice) {
+    score.firstChild.textContent = `Computer chose: ${compChoice}  `;
+    score.lastChild.textContent = `  Human chose: ${humanChoice}`;
+
+    if (compChoice === humanChoice) {
+        comment.textContent = "A wonderful draw!";
+    } else if (
+        (humanChoice === 'rock' && compChoice === 'scissor') ||
+        (humanChoice === 'paper' && compChoice === 'rock') ||
+        (humanChoice === 'scissor' && compChoice === 'paper')
+    ) {
+        comment.textContent = "You won! Inching closer to the crown, prince!";
+        humanScore++;
+    } else {
+        comment.textContent = "You lose, peasant!";
+        compScore++;
     }
-    }
-    if(compChoice=='paper'){
-        if(humanChoice.toLowerCase()=='scissor'){
-           console.log("You won! Inching closer to the crown,prince!");
-           humanScore++;
-        }
-       else if(humanChoice.toLowerCase()=='rock'){
-        console.log("You lose,peasant!");
-       compScore++;}
-       else{
-        console.log("A wonderful draw!");
-    }
-    }
-   
-    if(compChoice=='scissor'){
-        if(humanChoice.toLowerCase()=='rock'){
-           console.log("You won! Inching closer to the crown,prince!");
-           humanScore++;
-        }
-       else if(humanChoice.toLowerCase()=='paper'){
-        console.log("You lose,peasant!");
-       compScore++;}
-    
-    else{
-        console.log("A wonderful draw!");
-    }
+
+    resultBox.textContent = `Human score: ${humanScore}   Computer score: ${compScore}\nRound: ${round}`;
 }
 
-}
-
-/* const humanSelection = getHumanChoice();
-const compSelection = getCompChoice(); */
-
-
-function playGame(){
+function playGame(humanChoice) {
+    const compChoice = getCompChoice();
     round++;
-    console.log(`Round: ${round}`);
-    const humanSelection = getHumanChoice();
-    const compSelection = getCompChoice();
-    playRound(humanSelection,compSelection);
+    playRound(humanChoice, compChoice);
 
+    if (round === reqRounds) {
+        if (compScore > humanScore) {
+            comment.innerHTML = "You Lost!As expected of the lowly peasant you are! MmuuHAHAHAHA!!!";
+        } else if (humanScore > compScore) {
+            comment.innerHTML = "You Won!<br>Never doubted you, my King! Here is your crown👑. Please have it and lead us to paradise.";
+        } else {
+            comment.innerHTML = "A draw! As expected of the battle between two legendary warriors!";
+        }
+    }
 }
 
+let reqRounds = 5;
+const container = document.querySelector('.container');
+const paperbtn = document.querySelector('#paperbtn');
+const rockbtn = document.querySelector('#rockbtn');
+const scissorsbtn = document.querySelector('#scissorsbtn');
 
-
-console.log("");
-
-console.log("FINAL SCORE");
-console.log(`computer score:${compScore}`);
-console.log(`human score:${humanScore}`);
-
-if(compScore>humanScore){
-    console.log("As expected of the lowly peasant you are!MmuuHAHAHAHA!!!");
+container.addEventListener('click', (e) => {
+if (round<reqRounds) {
+        if (e.target === paperbtn) {
+            playGame('paper');
+        } else if (e.target === rockbtn) {
+            playGame('rock');
+        } else if (e.target === scissorsbtn) {
+            playGame('scissor');
+        }
 }
-
-else if(compScore<humanScore){
-    console.log("Never doubted you,my King!Here is your crown👑.Please have it and lead us to paradise.");
-}
-
-else{
-    console.log("A draw!As expected of the battle between two legendary warriors!");
-}
+});

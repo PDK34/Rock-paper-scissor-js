@@ -3,8 +3,13 @@ body{
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    background: linear-gradient(rgb(187, 183, 161),rgb(139, 139, 139),rgb(65, 59, 59),rgb(158, 156, 144));
+    height: 100vh;
 }
 
+h2{
+    font-size: 46px;
+}
 .container{
     padding-top: 7%;
     display: flex;
@@ -18,3 +23,45 @@ button{
     border-color: black;
     padding: 15px;
 }
+
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 5px black;
+    width: 40%;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 30px;
+    font-family: monospace,sans-serif;
+}
+
+button:hover{
+    background-color: #af9d9d;
+}
+
+.score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 5px black;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 30px;
+    font-family: monospace,sans-serif;
+    gap: 10px;
+}
+
+.comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 5px black;
+    width: 40%;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 19px;
+    font-family: monospace,sans-serif;
+}
+
