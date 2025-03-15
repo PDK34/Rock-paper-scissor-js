@@ -8,10 +8,16 @@ let humanScore = 0;
 let compScore = 0;
 let round = 0;
 
+let reqRounds ;
+
+reqRounds= prompt("Enter number of rounds to play;");
+
 const score = document.querySelector('.score');
 const comment = document.querySelector('.comment');
 const resultBox = document.querySelector('.result');
-
+score.firstChild.textContent = `Computer chose:   `;
+score.lastChild.textContent = `  Human chose:     `;
+resultBox.textContent = `Human score: ${humanScore}   Computer score: ${compScore}\nRound: ${round}`;
 function playRound(humanChoice, compChoice) {
     score.firstChild.textContent = `Computer chose: ${compChoice}  `;
     score.lastChild.textContent = `  Human chose: ${humanChoice}`;
@@ -49,7 +55,6 @@ function playGame(humanChoice) {
     }
 }
 
-let reqRounds = 5;
 const container = document.querySelector('.container');
 const paperbtn = document.querySelector('#paperbtn');
 const rockbtn = document.querySelector('#rockbtn');
